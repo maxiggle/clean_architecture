@@ -1,3 +1,4 @@
+import 'package:clean_architecture_tutorial/core/usecase.dart';
 import 'package:clean_architecture_tutorial/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:clean_architecture_tutorial/features/number_trivia/domain/respositories/number_trivia_repository.dart';
 import 'package:clean_architecture_tutorial/features/number_trivia/domain/usescases/get_concrete_number_trivia.dart';
@@ -29,7 +30,7 @@ void main() {
     when(mockNumberTriviaRepository.getConcreteNumberTrivia(testNumber))
         .thenAnswer((_) async => Right(testNumberTrivia));
     // act
-    final result = await useCase(number: testNumber);
+    final result = await useCase(Params(testNumber));
 
     // assert
     expect(result, Right(testNumberTrivia));
